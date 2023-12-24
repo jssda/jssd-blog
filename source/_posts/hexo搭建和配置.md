@@ -14,6 +14,8 @@ node 环境
 npm 环境  最好配置国内镜像, 此处推荐 腾讯node镜像源 http://mirrors.cloud.tencent.com/npm/
 ```
 
+<!--more-->
+
 ## 搭建hexo
 
 > 可参考官方文档 [文档 | Hexo](https://hexo.io/zh-cn/docs/index.html)
