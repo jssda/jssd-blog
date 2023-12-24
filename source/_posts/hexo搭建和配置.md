@@ -1,3 +1,213 @@
+---
+title: hexo搭建和配置
+date: 2023-12-24 14:58:45
+tags: ['hexo','next']
+categories: 网站配置
+---
+
+## 搭建环境
+
+```bash
+git 环境
+node 环境 
+# 因时间原因, 可能不可用, 访问腾讯镜像官方查看最新镜像源
+npm 环境  最好配置国内镜像, 此处推荐 腾讯node镜像源 http://mirrors.cloud.tencent.com/npm/
+```
+
+## 搭建hexo
+
+> 可参考官方文档 [文档 | Hexo](https://hexo.io/zh-cn/docs/index.html)
+
+### 加载 hexo 客户端
+
+```bash
+npm install -g hexo-cli
+# 此时就可以使用 hexo 命令了
+# 命令使用可参考官方文档，不多赘述
+```
+
+### hexo配置文件
+
+_config.yml 文件夹
+
+```yaml
+# 此处贴出我自己的配置文件
+
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+# Site
+title: "博客名称"
+subtitle: '博客title之下的二级标题'
+description: '可当作个性签名'
+keywords: '搜索引擎能搜到的关键字'
+author: 博客作者
+language: zh-CN  # 语言环境
+timezone: 'Asia/Shanghai'  # 时区
+
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+# 在部署的时候,会自动根据这个url推送到仓库
+url: https://yourname.github.io/project-name/
+permalink: :year/:month/:day/:hash/
+permalink_defaults:
+pretty_urls:
+  # 配置页面展示的时候,是否去除后缀
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+# 配置博客文章的url后缀
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime'
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+# 配置部署的时候推送的库和分支
+deploy:
+  type: 'git'
+  repo: 'git@github.com:jssda/jssd-blog.git'
+  branch: web
+
+# 卸载官方的markdown解析 使用更好的markdown解析  hexo-renderer-markdown-it
+markdown:
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-cjk-breaks # https://github.com/markdown-it/markdown-it-cjk-breaks
+    - markdown-it-container # https://github.com/markdown-it/markdown-it-container
+    - markdown-it-emoji # https://github.com/markdown-it/markdown-it-emoji
+    - markdown-it-footnote # https://github.com/markdown-it/markdown-it-footnote
+    - markdown-it-ins # https://github.com/markdown-it/markdown-it-ins
+    - markdown-it-mark # https://github.com/markdown-it/markdown-it-mark
+    - markdown-it-sub # https://github.com/markdown-it/markdown-it-sub
+    - markdown-it-sup # https://github.com/markdown-it/markdown-it-sup
+  preset: 'default'
+  render:
+    html: true
+    xhtmlOut: false
+    langPrefix: 'language-'
+    breaks: true
+    linkify: true
+    typgrapher: true
+    quotes: '“”‘’'
+  enable_rules:
+  disable_rules:
+  anchors:
+    level: 2
+    collisionSsuffix: ''
+    permalink: false
+    permalinkClass: 'header-anhor'
+    permalinkSide: 'left'
+    permalinkSymbol: '¶'
+    case: 0
+    separator: '-'
+# 据测试, 这个配置不起作用
+  images:
+    lazyload: false
+    perpend_root: false
+    post_asset: false
+  inline: false
+```
+
+## next 主题配置
+
+> 官方网址: https://theme-next.js.org/
+
+### 安装主题
+
+```bash
+npm install hexo-theme-next@latest
+```
+
+安装完毕之后, 就能够在主题文件夹找到找到next主题了，同时需要在 `_config.yml`文件夹中配置主题
+
+```yaml
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+```
+
+### 配置next主题
+
+将 next 的配置文件复制到 `_config.yml`同级目录下，并且改名为`_config.next.yml`。这样配置的原因是，当使用`npm`更新`next`主题的时候，不会覆盖掉已经存在的主题配置。
+
+```yaml
 # ===============================================================
 # It's recommended to use Alternate Theme Config to configure NexT
 # Modifying this file may result in merge conflict
@@ -11,7 +221,7 @@
 
 # Allow to cache content generation.
 cache:
-  enable: true
+  enable: true # 缓存，重新生成可以避免掉不必要的生成
 
 # Remove unnecessary files after hexo generate.
 minify: true
@@ -36,7 +246,7 @@ custom_file_path:
 # Scheme Settings
 # ---------------------------------------------------------------
 
-# Schemes
+# Schemes  不同的主题可以在这里放开注释，按照自己喜好来
 #scheme: Muse
 scheme: Mist
 #scheme: Pisces
@@ -50,7 +260,7 @@ darkmode: false
 # Site Information Settings
 # ---------------------------------------------------------------
 
-favicon:
+favicon: # 网站图标， 放到对应的文件夹下， 改名即可
   small: /images/favicon.png
   medium: /images/favicon.png
   apple_touch_icon: /images/apple-touch-icon-next.png
@@ -141,11 +351,11 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: /images/avatar.jpg
+  url: /images/avatar.jpg # 你自己的头像
   # If true, the avatar will be displayed in circle.
-  rounded: true
+  rounded: true  # 是否是圆形
   # If true, the avatar will be rotated with the cursor.
-  rotated: true
+  rotated: true  # 头像是否会转圈
 
 # Posts / Categories / Tags in sidebar.
 site_state: true
@@ -154,9 +364,10 @@ site_state: true
 # Usage: `Key: permalink || icon`
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
+# 头像下边的关联连接
 social:
-  GitHub: https://github.com/jssda || fab fa-github
-  E-Mail: mailto:jssdjing@gmail.com || fa fa-envelope
+  GitHub: https://github.com/yourname || fab fa-github
+  E-Mail: mailto:youremail || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Twitter: https://twitter.com/yourname || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
@@ -164,7 +375,7 @@ social:
   #YouTube: https://youtube.com/yourname || fab fa-youtube
   #Instagram: https://instagram.com/yourname || fab fa-instagram
   #Skype: skype:yourname?call|chat || fab fa-skype
-
+# 关联的图标
 social_icons:
   enable: true
   icons_only: false
@@ -379,7 +590,7 @@ codeblock:
     enable: false
     height: 500
 
-back2top:
+back2top: # 返回到顶端配置
   enable: true
   # Back to top in sidebar.
   sidebar: false
@@ -934,12 +1145,13 @@ css: css
 js: js
 images: images
 
+# 评论系统配置
 giscus:
   enable: true
-  repo: jssda/jssd-blog # Github repository name
-  repo_id: R_kgDOK8VKvA # Github repository id
+  repo: 评论系统的仓库 # Github repository name
+  repo_id: 加载giscus时候能看到这个配置 # Github repository id
   category: Announcements # Github discussion category
-  category_id: DIC_kwDOK8VKvM4Cb6OD # Github discussion category id
+  category_id: xxxxx # Github discussion category id
   # Available values: pathname | url | title | og:title
   mapping: title
   # Available values: 0 | 1
@@ -956,3 +1168,55 @@ giscus:
 auto_excerpt:
   enable: true
   length: 150
+```
+
+### giscus 评论系统添加
+
+> 官方文档： [giscus](https://giscus.app/zh-CN)
+
+参考官方文档即可，需要配置到`next`主题配置文件中，可参考以上配置
+
+## hexo 其他配置
+
+### 使用更好的markdown解析插件
+
+> 插件网址 [hexo-renderer-markdown-it](https://github.com/hexojs/hexo-renderer-markdown-it)
+
+```bash
+# 卸载官方的解析插件
+npm remove hexo-renderer-marked 
+# 安装更好的markdown解析
+npm i hexo-renderer-markdown-it
+```
+
+### 安装中英文之间自动加空格的包
+
+```bash
+npm install hexo-pangu
+```
+
+### 解决hexo博客展示图片问题
+
+```bash
+# 安装依赖
+npm install hexo-asset-image
+```
+
+#### hexo配置更改
+
+```yaml
+# _config.yml 中打开配置
+post_asset_folder: true
+```
+
+此时你写的markdown文档，加载的图片，需要放到文档同级目录的文档同名文件夹内。比如。注意，此时文件夹下不能有二级目录，图片只能放在同名目录下。
+
+![](hexo搭建和配置/2023-12-24-19-02-15-image.png)
+
+#### Typora 可如下配置
+
+![](hexo搭建和配置/2023-12-24-19-06-31-image.png)
+
+#### MarkText 可如下配置
+
+![](hexo搭建和配置/2023-12-24-19-07-50-image.png)

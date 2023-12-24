@@ -6,7 +6,7 @@
 title: "jssd's blog"
 subtitle: 'Talk is cheap. Show me the code.'
 description: '我思故我在'
-keywords: 'java python'
+keywords: 'blog 博客 jssd'
 author: jssd
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -110,6 +110,14 @@ deploy:
 markdown:
   plugins:
     - markdown-it-abbr
+    - markdown-it-cjk-breaks # https://github.com/markdown-it/markdown-it-cjk-breaks
+    - markdown-it-container # https://github.com/markdown-it/markdown-it-container
+    - markdown-it-emoji # https://github.com/markdown-it/markdown-it-emoji
+    - markdown-it-footnote # https://github.com/markdown-it/markdown-it-footnote
+    - markdown-it-ins # https://github.com/markdown-it/markdown-it-ins
+    - markdown-it-mark # https://github.com/markdown-it/markdown-it-mark
+    - markdown-it-sub # https://github.com/markdown-it/markdown-it-sub
+    - markdown-it-sup # https://github.com/markdown-it/markdown-it-sup
   preset: 'default'
   render:
     html: true
