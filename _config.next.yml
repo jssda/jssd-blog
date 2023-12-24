@@ -926,3 +926,23 @@ vendors:
 css: css
 js: js
 images: images
+
+giscus:
+  enable: true
+  repo: jssda/jssd-blog # Github repository name
+  repo_id: R_kgDOK8VKvA # Github repository id
+  category: Announcements # Github discussion category
+  category_id: DIC_kwDOK8VKvM4Cb6OD # Github discussion category id
+  # Available values: pathname | url | title | og:title
+  mapping: title
+  # Available values: 0 | 1
+  reactions_enabled: 1
+   # Available values: 0 | 1
+  emit_metadata: 0
+  # Available values: light | dark | dark_high_contrast | transparent_dark | preferred-color-scheme
+  theme: light
+  # Available values: en | zh-CN
+  lang: zh-CN
+  # Place the comment box above the comments
+  input_position: bottom
+
