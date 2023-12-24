@@ -2647,7 +2647,7 @@ header.header {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #932f38;
+  background: #60bfff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2696,4 +2696,8 @@ header.header {
 }
 .sub-menu .menu-item {
   display: inline-block;
+}
+.giscus {
+  max-width: unset;
+  box-sizing: border-box;
 }
