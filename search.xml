@@ -78,4 +78,51 @@
         <tag>next</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Debian12 音乐解决方案</title>
+    <url>/jssd-blog/2023/12/25/4dd3ba8ea601/</url>
+    <content><![CDATA[<h1>背景</h1>
+<blockquote>
+<p>网易云官网音乐将 Linux 安装包移除了</p>
+<p>emmm  老子不玩了，找三方客户端</p>
+<p>在试过了 yesplaymusic 等三方客户端之后，发现都不可用，于是找到了一个命令行终端音乐播放器</p>
+</blockquote>
+<span id="more"></span>
+<h1>客户端地址</h1>
+<p><a href="https://github.com/go-musicfox/go-musicfox">https://github.com/go-musicfox/go-musicfox</a></p>
+<p>我的系统环境是 Debian12  amd64</p>
+<img src="/jssd-blog/2023/12/25/4dd3ba8ea601/2023-12-25-23-33-25-image.png" class="">
+<p>去官方下载最新的安装包即可 <a href="https://github.com/go-musicfox/go-musicfox/releases/download/v4.3.0/go-musicfox_4.3.0_linux_amd64.zip">go-musicfox_4.3.0_linux_amd64.zip</a></p>
+<h2 id="解压">解压</h2>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">unzip go-musicfox_4.3.0_linux_amd64.zip</span><br></pre></td></tr></tbody></table></figure>
+<p>直接一个运行</p>
+<p>报错！</p>
+<h2 id="解决问题">解决问题</h2>
+<h3 id="错误一">错误一</h3>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Perhaps you should add the directory containing `flac.pc'</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br></pre></td></tr></tbody></table></figure>
+<p>安装 <code>flac</code> 软件包</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo apt install flac</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="错误二">错误二</h3>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Package alsa was not found in the pkg-config search path. Perhaps you should add the directory containing `alsa.pc'</span><br></pre></td></tr></tbody></table></figure>
+<p>接着装</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install libasound2-dev</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="错误三">错误三</h3>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">libFLAC.so.8: cannot open shared object file: No such file or directory</span><br></pre></td></tr></tbody></table></figure>
+<p>错误原因：<code>flac</code> 在 <code>Debian12</code> 中默认安装的是 <code>libFLAC.so.12.0.0</code>，而不是 <code>libFLAC.so.8</code>，但他是兼容的，所以新建一个软链接即可解决。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo <span class="built_in">ln</span> -s /usr/lib/x86_64-linux-gnu/libFLAC.so.12.0.0 /usr/lib/x86_64-linux-gnu/libFLAC.so.8</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="将命令添加到环境变量中">将命令添加到环境变量中</h2>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo <span class="built_in">ln</span> -s /opt/go-musicfox_4.3.0_linux_amd64/musicfox /usr/local/bin/musicfox</span><br></pre></td></tr></tbody></table></figure>
+<h1>运行效果</h1>
+<img src="/jssd-blog/2023/12/25/4dd3ba8ea601/2023-12-25-23-44-29-image.png" class="">
+<p>enjoy！！ 😃</p>
+]]></content>
+      <categories>
+        <category>系统</category>
+      </categories>
+      <tags>
+        <tag>Debian</tag>
+        <tag>linux</tag>
+        <tag>Debian12</tag>
+      </tags>
+  </entry>
 </search>
