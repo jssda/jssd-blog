@@ -5,6 +5,7 @@
     <url>/jssd-blog/2023/12/21/d0c7fc05ef8a/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start">Quick Start</h2>
+<span id="more"></span>
 <h3 id="Create-a-new-post">Create a new post</h3>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></tbody></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
@@ -24,6 +25,7 @@
     <url>/jssd-blog/2023/12/24/10a8a66dccf3/</url>
     <content><![CDATA[<h2 id="搭建环境">搭建环境</h2>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git 环境</span><br><span class="line">node 环境 </span><br><span class="line"><span class="comment"># 因时间原因, 可能不可用, 访问腾讯镜像官方查看最新镜像源</span></span><br><span class="line">npm 环境  最好配置国内镜像, 此处推荐 腾讯node镜像源 http://mirrors.cloud.tencent.com/npm/</span><br></pre></td></tr></tbody></table></figure>
+<span id="more"></span>
 <h2 id="搭建hexo">搭建 hexo</h2>
 <blockquote>
 <p>可参考官方文档 <a href="https://hexo.io/zh-cn/docs/index.html">文档 | Hexo</a></p>
